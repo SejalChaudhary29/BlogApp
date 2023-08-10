@@ -1,39 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog - A destination for blogger</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/utils.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BlogifyHub - A destination for blogger</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/utils.css" />
+    <link rel="stylesheet" href="/css/bloglist.css">
+  </head>
+  <body>
     <nav class="navigation max-width-1 m-auto">
-        <div class="nav-left">
-            <span>BlogifyHub</span>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/about">About</a></li>
-                <li> <a href="/contact"> Contact</a></li>
-            </ul>
-        </div>
-        <div class="nav-right">
-            <input type="text" class="form-input" placeholder="search article">
-            <button class="btn"> search</button>
-        </div>
+      <div class="nav-left">
+        <span>BlogifyHub</span>
+        <ul>
+          <li> <button id="addBlogBtn"> &#43; Create</button></li>
+        </ul>
+        
+      </div>
+      <div class="nav-right">
+        <input type="text" class="form-input" placeholder="search article" />
+        <button class="btn">search</button>
+      </div>
     </nav>
-    <div class="content max-width-1 m-auto">
-        <div class="content-left">
-            <h1> Embark on a Journey of Discovery</h1>
-            <p> Explore, Express, Evolve - Your Journey Awaits here...! </p>
 
-        </div>
-        <div class="content-right">
-<img src="img/pic2.jpg" alt="">
-        </div>
+    <div class="content max-width-1 m-auto">
+      <div class="content-left">
+        <h1>Embark on a Journey of Discovery</h1>
+        <p>
+          "Where Words Dance and Ideas Flourish -<br />Welcome to a World of
+          Inspiration and Insight at BlogiFyHub"
+        </p>
+      </div>
+    </div>
+<section id="blogList">
+</section>
+    
+    <div class="home-articles modal" id="addBlogModal">
+      <div class="home-article modal-content" >
+        <span class="close">&times;</span>
+        <form id="addBlogForm">
+            <input type="text" id="title" placeholder="Title" required>
+            <input type="text" id="poster" placeholder="Poster" required>
+            <input type="file" id="posterImage" accept="image/*" required>
+            <textarea id="description" placeholder="Description" required></textarea>
+            <textarea id="content" placeholder="Content" required></textarea>
+            <button type="submit">Add Blog</button>
+        </form>
+      </div>
     </div>
     <div class="footer max-width-2 m-auto">
-
+      Copyright &copy; blogifyihub.com
     </div>
-</body>
+    <script src="./js/script.js"></script>
+  </body>
 </html>
