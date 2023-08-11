@@ -7,20 +7,33 @@
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/utils.css" />
     <link rel="stylesheet" href="/css/bloglist.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
   </head>
   <body>
     <nav class="navigation max-width-1 m-auto">
       <div class="nav-left">
         <span>BlogifyHub</span>
         <ul>
-          <li> <button id="addBlogBtn"> &#43; Create</button></li>
+          
         </ul>
         
       </div>
       <div class="nav-right">
-        <input type="text" class="form-input" placeholder="search article" />
-        <button class="btn">search</button>
+       
+      <div class="search-input">
+        <input type="text" class="form-input" placeholder="search article"  />
+        <i id="search" class="fa-solid fa-magnifying-glass"></i>
+
       </div>
+      </div>
+      <div class="add-blog-btn" id="add-blog-btn">
+        <i class="fa-solid fa-plus"></i>
+    </div>
+    <div class="back-btn" id="back-btn" style="display: none;">
+      <i class="fa-solid fa-arrow-left"></i>
+  </div>
     </nav>
 
     <div class="content max-width-1 m-auto">
@@ -32,23 +45,27 @@
         </p>
       </div>
     </div>
-<section id="blogList">
-</section>
+    <section id="blog-container" class="flex">
+    </section>
     
-    <div class="home-articles modal" id="addBlogModal">
-      <div class="home-article modal-content" >
-        <span class="close">&times;</span>
-        <form id="addBlogForm">
-            <input type="text" id="title" placeholder="Title" required>
-            <input type="text" id="poster" placeholder="Poster" required>
-            <input type="file" id="posterImage" accept="image/*" required>
-            <textarea id="description" placeholder="Description" required></textarea>
-            <textarea id="content" placeholder="Content" required></textarea>
-            <button type="submit">Add Blog</button>
-        </form>
+    <section id="overlay">
+      <div class="add-blog-section flex">
+          <header class="flex">
+              <h2>Create your blog</h2>
+              <span id="close-blog-btn"><i class="fa-solid fa-xmark"></i></span>
+          </header>
+          <form >
+              <input type="text" id="post-url" placeholder="Enter Blog Post URL: ">
+              <input type="text" id="blog-title" placeholder="Enter Blog Title: ">
+              <input type="text" id="blog-desc" placeholder="Enter Blog Description: ">
+              <textarea name="blog" id="main-blog" cols="30" rows="10" placeholder="write"></textarea>
+              <button type="submit" id="create-blog-btn">Create Blog</button>
+          </form>
       </div>
+  </section> 
+
     </div>
-    <div class="footer max-width-2 m-auto">
+    <div class="footer ">
       Copyright &copy; blogifyihub.com
     </div>
     <script src="./js/script.js"></script>
