@@ -8,7 +8,17 @@ const BlogTitle = document.querySelector('#blog-title');
 const BlogDesc = document.querySelector('#blog-desc');
 const BlogContent = document.querySelector('#main-blog');
 
-
+// Demo blog data                          
+const demoBlog = [
+    {
+        ImgURL: 'https://cdn.pixabay.com/photo/2023/08/02/12/39/bird-8165143_1280.jpg',
+        title: 'Parrot',
+        desc: `Parrots are birds of the order Psittaciformes.[1][2][3] There are about 372 species in 86 genera. They are found in most tropical and subtropical regions. The greatest diversity of parrots is found in South America and Australasia.
+        Parrots are intelligent birds.`,
+        content: `Parrots are birds of the order Psittaciformes.[1][2][3] There are about 372 species in 86 genera. They are found in most tropical and subtropical regions. The greatest diversity of parrots is found in South America and Australasia.
+Parrots are intelligent birds. They have relatively large brains,[4] they can learn, and they can use simple tools.[5] Because some species have the ability to make sounds like human voices and have plumages with bright colors, many species are kept as pets. This includes some endangered and protected species. ` },
+   
+];
 
 addBlogBtn.addEventListener('click', () => {
     addBlogSection.classList.add('active-add-blog');
@@ -120,12 +130,23 @@ function createBlogPostElement(title, imageUrl, description, content) {
         window.scrollTo({top: 0})
         showBlog(title, imageUrl, description, content);
     });
+    const deleteBtn = document.createElement('button');
+    deleteBtn.classList.add('delete-btn');
+    deleteBtn.textContent = 'Delete';
+
+    deleteBtn.addEventListener('click', (event) => {
+        event.stopPropagation();
+        const confirmation = confirm('Are you sure you want to delete this blog?');
+        if (confirmation) {
+            deleteBlog(title); // Call the deleteBlog function with the title of the blog
+        }
+    });
 
     article.appendChild(imageDiv);
     article.appendChild(titleDiv);
     article.appendChild(descDiv);
     article.appendChild(readMoreBtn);
-
+    article.appendChild(deleteBtn); 
     return article;
 }
 
@@ -149,9 +170,20 @@ function addBlogPost(title, imageUrl, description, content) {
     let existingBlogs = JSON.parse(localStorage.getItem('blogs')) || [];
     existingBlogs.push(blogData);
     localStorage.setItem('blogs', JSON.stringify(existingBlogs));
+
+    loadBlogPosts(); // Refresh the blog posts after adding
 }
 
+function deleteBlog(title) {
+    let existingBlogs = JSON.parse(localStorage.getItem('blogs')) || [];
+    existingBlogs = existingBlogs.filter(blog => blog.title !== title);
+    localStorage.setItem('blogs', JSON.stringify(existingBlogs));
+    loadBlogPosts(); // Refresh the blog posts after deletion
+}
+
+
 function loadBlogPosts() {
+   
     let existingBlogs = JSON.parse(localStorage.getItem('blogs')) || [];
 
     if (existingBlogs.length > 0) {
@@ -208,50 +240,10 @@ function hideAddBlogModal() {
     document.body.style.overflow = 'auto';
 }
 
-
+createBlogBtn.addEventListener('click', handleAddBlogFormSubmit);
+window.addEventListener('load', loadBlogPosts);
+window.addEventListener('load', addDemoBlogPosts);
 
 // Back button functionality
 const backButton = document.getElementById('back-btn');
 backButton.addEventListener('click', hideBlog);
-
-
-// ... (your existing code above)
-
-function displayBlogs() {
-    blogContainer.innerHTML = '';
-    const existingBlogs = JSON.parse(localStorage.getItem('blogs')) || [];
-    existingBlogs.forEach((blog, index) => {
-        const blogDiv = document.createElement('div');
-        blogDiv.className = 'blog';
-        blogDiv.innerHTML = `
-            <img src="${blog.ImgURL}" alt="Blog Image">
-            <h2>${blog.title}</h2>
-            <p>${blog.desc}</p>
-            <button class="read-more-btn" onclick="openBlog(${index})">Read More</button>
-            <button class="delete-blog-btn" onclick="deleteBlog(${index})">Delete</button>
-        `;
-        blogContainer.appendChild(blogDiv);
-    });
-}
-
-// Function to delete a blog post
-function deleteBlog(index) {
-    let existingBlogs = JSON.parse(localStorage.getItem('blogs')) || [];
-
-    if (index >= 0 && index < existingBlogs.length) {
-        existingBlogs.splice(index, 1);
-        localStorage.setItem('blogs', JSON.stringify(existingBlogs));
-        displayBlogs(); // Refresh the displayed blogs
-    }
-}
-
-// ... (your existing code below)
-
-// Add the event listener for deleting blogs
-createBlogBtn.addEventListener('click', handleAddBlogFormSubmit);
-
-window.addEventListener('load', () => {
-    displayBlogs(); // Display the initial set of blogs
-});
-window.addEventListener('load', loadBlogPosts);
-// window.addEventListener('load', addDemoBlogPosts); `
