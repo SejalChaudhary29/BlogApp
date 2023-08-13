@@ -81,10 +81,12 @@ body {
 }
 .content-left h1 {
   color: #eed118;
+  font-size: 39px;
 }
 .content-left > p {
   text-align: center;
   padding: 15px 0;
+  font-size: 18  px;
 }
 .content-right {
   display: flex;
@@ -101,18 +103,22 @@ body {
   /* background-color: #f4f4f4; */
 }
 
-.footer {
+footer {
+  margin-top: 400px;
   height: 200px;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: fixed;
+
   width: 100%;
+
   bottom: 0;
+  left: 0;
 
   color: #fff;
   background-color: #1b1a1a;
 }
+
 
 header {
   display: flex;
@@ -202,3 +208,4 @@ button[type="submit"]:hover {
   cursor: pointer;
   color: #181818;
 }
+

@@ -37,6 +37,9 @@
     border: 1px solid #eece18;
     background-color: #323127;
 }
+.read-more-btn{
+    margin-bottom: 12px;
+}
 .form-input{
     padding: 0px 5px;
     padding-top: 3px;

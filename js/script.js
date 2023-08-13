@@ -32,6 +32,7 @@ closeBlogBtn.addEventListener('click', () => {
 function showBlog(title, imageUrl, description, content) {
     // Hide the blog container and show the individual blog content
     blogContainer.style.display = 'none';
+  
 
     const blogContent = document.createElement('section');
     blogContent.id = 'blog-content';
@@ -72,6 +73,7 @@ function showBlog(title, imageUrl, description, content) {
 
     mainContentDiv.appendChild(p);
 
+
     blogContent.appendChild(headerDiv);
     blogContent.appendChild(mainContentDiv);
 
@@ -87,7 +89,11 @@ function hideBlog() {
     // Show the blog container and remove the individual blog content
     blogContainer.style.display = 'flex';
     document.getElementById('blog-content').remove();
-
+    
+    const footer = document.getElementById('footer');
+    footer.style.display = 'block'; 
+   
+    
     // Show the add blog button and hide the back button
     document.getElementById('add-blog-btn').style.display = 'grid';
     document.getElementById('back-btn').style.display = 'none';
@@ -164,7 +170,7 @@ function addBlogPost(title, imageUrl, description, content) {
         description,
         content
     );
-
+ 
     blogContainer.appendChild(blogPostElement);
 
     let existingBlogs = JSON.parse(localStorage.getItem('blogs')) || [];
